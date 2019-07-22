@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>成绩管理系统</title>
+		<!-- 引入 Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="js/addG.js"></script>
+		<script type="text/javascript" src="js/searchG.js" ></script>
+		<script type="text/javascript" src="js/allG.js" ></script>
+		<script type="text/javascript" src="js/editG.js" ></script>
+		<script type="text/javascript" src="js/deleteG.js" ></script>
+		<script type="text/javascript" src="js/User.js" ></script>
+
+	</head>
+
+	<body>
+		<div style="margin: 20px 0 0 70%;">
+			<span>管理员:</span><span id="user" style="font-family: '微软雅黑'; font-size: 16px;color: green;"></span>
+			<button class="btn btn-primary" id="cancell">注销</button>
+		</div>
+		<!-- 添加成绩 -->
+		<button class="btn btn-primary" id="add-btn" data-toggle="modal" data-target="#addGrade">添加成绩</button>
+		<!-- 添加成绩弹窗 -->
+		<div class="modal fade" id="addGrade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">添加成绩</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<li>
+								<span>学号:</span><input id="new_stuId" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>姓名:</span><input id="new_name" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>Java:</span><input id="new_Java" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>Web:</span><input id="new_Web" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>OOP:</span><input id="new_OOP" type="text" />
+							</li>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="addG" data-toggle="modal" data-target="#addGrade">添加</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--查询成绩-->
+		<div class="col-lg-3" id="searchDiv">
+			<div class="input-group">
+				<input type="text" id="id-name" placeholder="请输入学号或姓名" class="form-control">
+				<span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="searchG" data-toggle="modal" data-target="#searchGrade">搜索</button>
+                    </span>
+			</div>
+		</div>
+		<!-- 查询成绩弹窗 -->
+		<div class="modal fade" id="searchGrade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">成绩</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<li>
+								<span>学号:</span><input id="a_stuId" type="text" disabled="disabled" />
+							</li>
+							<br>
+							<li>
+								<span>姓名:</span><input id="a_name" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>Java:</span><input id="a_Java" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>Web:</span><input id="a_Web" type="text" />
+							</li>
+							<br>
+							<li>
+								<span>OOP:</span><input id="a_OOP" type="text" />
+							</li>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="delete" data-toggle="modal" data-target="#searchGrade">删除</button>
+						<button type="button" class="btn btn-primary" id="edit" data-toggle="modal" data-target="#searchGrade">修改</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="table">
+		<table class="table table-bordered">
+			<caption><strong>Grade Table</strong></caption>
+			<thead>
+				<tr>
+					<th rowspan="2">ID</th>
+					<th rowspan="2">Name</th>
+					<th colspan="3">Points</th>
+					<th rowspan="2">Personal Average</th>
+					<th rowspan="2">Level</th>
+					<th rowspan="2">Operation</th>
+				</tr>
+				<tr>
+				<th>OOP</th>
+				<th>Web</th>
+				<th>Java</th>
+				</tr>
+				<tr id="end">
+				<td colspan="8"><span>共有</span><input type="text" id="num"/><span>名学生</span></td>
+			</tr>
+			</thead>
+		</table>
+	</div>
+	</body>
+
+	<style>
+		table tr th,
+			td,caption{
+				padding: 0;
+				text-align: center;
+			}
+		caption{
+			font-size: 30px;
+		}
+		table{
+			width: 80%;
+		}
+		#num{
+			border: none;
+			text-align: center;
+		}
+		#table{
+			width: 80%;
+			margin: 30px 0 0 10%;
+		}
+		#add-btn{
+			margin: 20px 0 0 20px;
+		}
+		#searchDiv{
+			margin: 20px 0 0 10%;
+		}
+	</style>
+</html>
